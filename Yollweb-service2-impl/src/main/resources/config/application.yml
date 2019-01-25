@@ -1,0 +1,40 @@
+spring:
+    application:
+        name: Yollweb-service2
+    datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 123456
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat,wall,log4j
+      initalSize: 5
+      maxActive: 10
+      maxWait: 60000
+server:
+  port: 8082
+  
+
+feign: 
+  hystrix: 
+    enabled: true
+
+
+mybatis:
+  typeAliasesPackage: com.yollweb.springboot.cloud.service2.domain
+  mapperLocations: classpath:/mapper/**/*.xml
+  
+eureka:
+  client:
+    register-with-eureka: true
+    service-url: 
+      defaultZone: http://127.0.0.1:7001/eureka/
+      
+application: 
+    rule-register: ruleRegister
+    rule-perfect-info: rulePerfectInfo
+    druid:
+        username: admin
+        password: admin
+        
+management.security.enabled: false

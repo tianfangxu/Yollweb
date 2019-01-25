@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.9.RELEASE</version>
+  </parent>
+  
+  <groupId>org.springboot.cloud</groupId>
+  <artifactId>Yollweb</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<junit.version>4.12</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<lombok.version>1.16.18</lombok.version>
+		<hutool-all.version>4.1.2</hutool-all.version>
+		<dubbo.version>2.6.2</dubbo.version>
+		<spring-cloud.version>Edgware.SR1</spring-cloud.version>
+		<spring-boot-admin.version>1.5.7</spring-boot-admin.version>
+		<!-- add -->
+        <commons-io.version>2.5</commons-io.version>
+        <commons-lang.version>3.5</commons-lang.version>
+        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <java.version>1.8</java.version>
+        <jcache.version>1.0.0</jcache.version>
+        <logstash-logback-encoder.version>4.11</logstash-logback-encoder.version>
+        <mapstruct.version>1.1.0.Final</mapstruct.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+        <maven-mybatis-generator-maven-plugin.version>1.3.5</maven-mybatis-generator-maven-plugin.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <maven.version>3.0.0</maven.version>
+        <metrics-spring.version>3.1.3</metrics-spring.version>
+        <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
+        <run.addResources>false</run.addResources>
+        <jhipster.server.version>1.1.13</jhipster.server.version>
+        <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
+        <!-- Spring properties -->
+        <spring-cloud-contract.version>1.1.4.RELEASE</spring-cloud-contract.version>
+        <springfox.version>2.7.0</springfox.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <yarn.version>v1.2.1</yarn.version>
+        <mybatis.version>1.3.1</mybatis.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.9.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<!-- spring-boot-admin-dependencies -->
+	      	<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.0.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.31</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>1.3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			
+			<!-- add -->
+		      <dependency>
+		        <groupId>org.postgresql</groupId>
+		        <artifactId>postgresql</artifactId>
+		        <version>42.0.0.jre7</version>
+		      </dependency>
+		      <dependency>
+		        <groupId>org.apache.commons</groupId>
+		        <artifactId>commons-lang3</artifactId>
+		        <version>3.4</version>
+		      </dependency>
+		      <dependency>
+		        <groupId>commons-codec</groupId>
+		        <artifactId>commons-codec</artifactId>
+		        <version>1.9</version>
+		      </dependency>
+		      <dependency>
+		        <groupId>org.apache.shiro</groupId>
+		        <artifactId>shiro-spring</artifactId>
+		        <version>1.3.2</version>
+		      </dependency>
+		      <dependency>
+		        <groupId>com.github.theborakompanioni</groupId>
+		        <artifactId>thymeleaf-extras-shiro</artifactId>
+		        <version>2.0.0</version>
+		      </dependency>
+		      <dependency>
+		        <groupId>com.squareup.okhttp3</groupId>
+		        <artifactId>okhttp</artifactId>
+		        <version>3.8.1</version>
+		      </dependency>
+		      <dependency>
+		       <groupId>com.google.code.gson</groupId>
+		       <artifactId>gson</artifactId>
+		       <version>2.7</version>
+		      </dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<finalName>Yollweb</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<modules>
+		<module>Yollweb-api</module>
+		<module>Yollweb-service</module>
+		<module>Yollweb-service-impl</module>
+		<module>Yollweb-service2</module>
+		<module>Yollweb-service2-impl</module>
+		<module>Yollweb-zuul-gateway</module>
+		<module>Yollweb-eureka-center</module>
+		<module>Yollweb-common</module>
+		<module>Yollweb-admin</module>
+	</modules>
+</project>

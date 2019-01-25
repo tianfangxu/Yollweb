@@ -1,0 +1,46 @@
+server: 
+  port: 9527
+ 
+spring: 
+  application:
+    name: Yollweb-zuul-gateway
+
+http:
+  multipart:
+    max-file-size: 2000Mb
+    max-request-size: 2500Mb
+
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://127.0.0.1:7001/eureka/
+instance:
+  instance-id: Yollweb-zuul-gateway
+  ip-address: true
+ 
+ 
+zuul: 
+  #ignored-services: microservicecloud-dept
+  #1、设置访问路径前缀【为zuul设置一个公共的前缀】
+  prefix: /yollweb/cloud
+  #2、忽略使用serviceId作为访问路径
+  ignored-services: "*" 
+  routes: 
+    agriculture: 
+      #微服务项目2
+      serviceId: yollweb-service2
+      #设置访问该服务的路径，等同于serviceId（前提是该服务路径未在ignored-services中）
+      path: /service2/**
+    business: 
+      #微服务项目1
+      serviceId: yollweb-service
+      #设置访问该服务的路径，等同于serviceId（前提是该服务路径未在ignored-services中）
+      path: /service/**
+ 
+info:
+  app.name: Yollweb-zuul-gateway
+  company.name: www.Yollweb.company.it
+  build.artifactId: Yollweb-zuul-gateway
+  build.version: 1.0
+
+management.security.enabled: false
